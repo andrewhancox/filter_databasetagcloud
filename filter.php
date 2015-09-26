@@ -27,6 +27,8 @@ defined('MOODLE_INTERNAL') || die();
  */
 class filter_databasetagcloud extends moodle_text_filter {
     public function filter($text, array $options = array()) {
+        global $COURSE;
+
         $matches = array();
         preg_match_all('/databasetagcloud_field_[0-9]+/', $text, $matches);
 
@@ -43,7 +45,7 @@ class filter_databasetagcloud extends moodle_text_filter {
                     return $text;
                 }
 
-                $tags = block_databasetags::get_tags(array($fieldid));
+                $tags = block_databasetags::get_tags(array($fieldid), $COURSE->id);
                 $cloud = block_databasetags::tag_print_cloud($tags);
 
                 $text = str_replace($match, $cloud, $text);
