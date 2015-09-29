@@ -28,6 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 class filter_databasetagcloud extends moodle_text_filter {
     public function filter($text, array $options = array()) {
         global $CFG;
+        require_once("$CFG->dirroot/blocks/moodleblock.class.php");
         require_once("$CFG->dirroot/blocks/databasetags/block_databasetags.php");
 
         $matches = array();
