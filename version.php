@@ -25,3 +25,6 @@ defined('MOODLE_INTERNAL') || die();
 $plugin->version   = 2014051200;
 $plugin->requires  = 2014050800;
 $plugin->component = 'filter_databasetagcloud';
+$plugin->dependencies = array(
+    'block_databasebookmarks' => ANY_VERSION,
+);
