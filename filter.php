@@ -26,12 +26,12 @@ defined('MOODLE_INTERNAL') || die();
  * Activity name filtering
  */
 class filter_databasetagcloud extends moodle_text_filter {
-    public function filter($text, array $options = array()) {
+    public function filter($text, array $options = []) {
         global $CFG;
         require_once("$CFG->dirroot/blocks/moodleblock.class.php");
         require_once("$CFG->dirroot/blocks/databasetags/block_databasetags.php");
 
-        $matches = array();
+        $matches = [];
         preg_match_all('/databasetagcloud_field_[0-9]+/', $text, $matches);
 
         foreach ($matches as $matchlist) {
@@ -47,7 +47,7 @@ class filter_databasetagcloud extends moodle_text_filter {
                     return $text;
                 }
 
-                $tags = block_databasetags::get_tags(array($fieldid));
+                $tags = block_databasetags::get_tags([$fieldid]);
                 $cloud = block_databasetags::tag_print_cloud($tags);
 
                 $text = str_replace($match, $cloud, $text);
