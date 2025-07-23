@@ -14,18 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * @package    filter_databasetagcloud
- * @copyright  2015 onwards Andrew Hancox (andrewdchancox@googlemail.com)
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+namespace filter_databasetagcloud;
 
-defined('MOODLE_INTERNAL') || die();
+use block_databasetags;
 
-/**
- * Activity name filtering
- */
-class filter_databasetagcloud extends moodle_text_filter {
+class text_filter extends \core_filters\text_filter {
+    #[\Override]
     public function filter($text, array $options = []) {
         global $CFG;
         require_once("$CFG->dirroot/blocks/moodleblock.class.php");
